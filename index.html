@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OK PAY</title>
+  <title>OKPAY</title>
 
   <style>
     * {
@@ -13,40 +13,42 @@
     body {
       margin: 0;
       min-height: 100vh;
-      background: #000;
-      color: #fff;
-      font-family: Arial, sans-serif;
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       padding: 20px;
+      font-family: Arial, sans-serif;
+      color: white;
+      background: linear-gradient(135deg, #10052e, #19104b, #061b46);
     }
 
     .box {
       width: 100%;
       max-width: 380px;
       padding: 28px 22px;
-      background: #111;
-      border: 1px solid #333;
-      border-radius: 18px;
       text-align: center;
+      border-radius: 22px;
+      border: 1px solid #6945b8;
+      background: #130c37;
+      box-shadow: 0 0 30px rgba(116, 65, 255, 0.22);
     }
 
     .logo {
-      width: 100px;
-      height: 100px;
+      display: block;
+      width: 110px;
+      height: 110px;
       object-fit: contain;
-      margin-bottom: 12px;
+      margin: 0 auto 15px;
     }
 
     h1 {
-      margin: 0 0 25px;
+      margin: 0 0 26px;
       font-size: 30px;
       letter-spacing: 2px;
     }
 
     h2 {
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
 
     input {
@@ -54,15 +56,15 @@
       width: 100%;
       padding: 14px;
       margin: 14px 0;
-      border: 1px solid #444;
-      border-radius: 9px;
-      background: #222;
-      color: #fff;
+      border: 1px solid #7255c7;
+      border-radius: 10px;
+      background: #171238;
+      color: white;
       font-size: 16px;
     }
 
     input::placeholder {
-      color: #ccc;
+      color: #c6bce8;
     }
 
     button {
@@ -70,9 +72,9 @@
       padding: 14px;
       margin-top: 12px;
       border: none;
-      border-radius: 9px;
-      background: #00c853;
-      color: #000;
+      border-radius: 10px;
+      background: linear-gradient(90deg, #843cff, #286bff);
+      color: white;
       font-size: 17px;
       font-weight: bold;
       cursor: pointer;
@@ -80,8 +82,9 @@
 
     .note {
       margin-top: 18px;
-      color: #aaa;
+      color: #c5bce5;
       font-size: 12px;
+      line-height: 1.5;
     }
 
     [hidden] {
@@ -91,25 +94,23 @@
 </head>
 
 <body>
-
   <main class="box">
 
     <img
-      src="logo.png"
-      alt="OK PAY"
+      src="IMG_20261021_004810_138.jpg"
+      alt="OKPAY"
       class="logo"
     >
 
-    <h1>OK PAY</h1>
+    <h1>OKPAY</h1>
 
     <section id="loginScreen">
       <form id="loginForm">
-
         <input
           type="tel"
           placeholder="Mobile Number"
-          maxlength="10"
           inputmode="numeric"
+          maxlength="10"
           autocomplete="off"
           required
         >
@@ -121,17 +122,7 @@
           required
         >
 
-        <input
-          type="password"
-          placeholder="6 Digit Demo PIN"
-          inputmode="numeric"
-          maxlength="6"
-          autocomplete="off"
-          required
-        >
-
         <button type="submit">LOGIN</button>
-
       </form>
 
       <p class="note">
@@ -145,7 +136,6 @@
       <p>Demo OTP screen</p>
 
       <form id="otpForm">
-
         <input
           type="text"
           placeholder="Enter Demo OTP"
@@ -156,14 +146,11 @@
         >
 
         <button type="submit">VERIFY</button>
-
       </form>
 
       <p id="message" class="note" aria-live="polite"></p>
 
-      <button id="backButton" type="button">
-        BACK
-      </button>
+      <button id="backButton" type="button">BACK</button>
     </section>
 
   </main>
@@ -178,27 +165,24 @@
 
     loginForm.addEventListener("submit", function(event) {
       event.preventDefault();
-
       loginScreen.hidden = true;
       otpScreen.hidden = false;
-      message.textContent = "Demo only. No OTP has been sent.";
+      message.textContent = "Demo only. No OTP was sent.";
     });
 
     otpForm.addEventListener("submit", function(event) {
       event.preventDefault();
-
       message.textContent =
         "Demo complete. No OTP was verified or saved.";
     });
 
     backButton.addEventListener("click", function() {
-      otpForm.reset();
       loginForm.reset();
+      otpForm.reset();
       otpScreen.hidden = true;
       loginScreen.hidden = false;
       message.textContent = "";
     });
   </script>
-
 </body>
 </html>
