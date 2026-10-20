@@ -2,21 +2,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mobile Login</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f1f4f9;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }    .box {
-        background: white;
-        width: 85%;
+    <title>Demo Login Page</title><style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        padding: 20px;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: Arial, sans-serif;
+        background: #f1f4f9;
+    }
+
+    .login-box {
+        width: 100%;
         max-width: 360px;
         padding: 25px;
+        background: white;
         border-radius: 12px;
         box-shadow: 0 4px 15px #ddd;
         text-align: center;
@@ -24,13 +30,13 @@
 
     h2 {
         color: #1769ff;
+        margin-bottom: 25px;
     }
 
     input {
-        box-sizing: border-box;
         width: 100%;
-        padding: 12px;
-        margin: 15px 0;
+        padding: 13px;
+        margin-bottom: 15px;
         border: 1px solid #ccc;
         border-radius: 6px;
         font-size: 16px;
@@ -38,24 +44,61 @@
 
     button {
         width: 100%;
-        padding: 12px;
+        padding: 13px;
         background: #1769ff;
         color: white;
         border: none;
         border-radius: 6px;
         font-size: 16px;
+        cursor: pointer;
+    }
+
+    .note {
+        margin-top: 18px;
+        font-size: 12px;
+        color: #666;
     }
 </style>
 
-</head>
-<body>
-    <div class="box">
-        <h2>Login</h2>
-        <form onsubmit="event.preventDefault(); alert('Demo only. Login is not connected yet.');">
-            <input type="tel" placeholder="Enter mobile number"
-                   maxlength="10" required>
-            <button type="submit">Login</button>
-        </form>
-    </div>
+</head><body>
+    <div class="login-box">
+        <h2>Demo Login</h2>    <form id="demoForm">
+        <input
+            type="tel"
+            placeholder="Enter Mobile Number"
+            maxlength="10"
+            required
+        >
+
+        <input
+            type="password"
+            placeholder="Enter Password"
+            required
+        >
+
+        <input
+            type="password"
+            placeholder="Enter 6 Digit PIN"
+            inputmode="numeric"
+            maxlength="6"
+            pattern="[0-9]{6}"
+            required
+        >
+
+        <button type="submit">Login</button>
+    </form>
+
+    <p class="note">
+        Demo only — no information is saved or sent.
+    </p>
+</div>
+
+<script>
+    document.getElementById("demoForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        alert("Demo only. Login is not connected.");
+    });
+</script>
+
 </body>
 </html>
