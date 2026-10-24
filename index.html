@@ -4,12 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OKPAY</title>
-
 <style>
 * {
   box-sizing: border-box;
 }
-
 body {
   margin: 0;
   min-height: 100vh;
@@ -21,7 +19,6 @@ body {
   background: linear-gradient(135deg, #10052e, #19104b, #061b46);
   color: white;
 }
-
 .card {
   width: 100%;
   max-width: 390px;
@@ -32,35 +29,29 @@ body {
   box-shadow: 0 12px 35px #0007;
   text-align: center;
 }
-
 .logo {
   width: 95px;
   height: 95px;
   object-fit: contain;
 }
-
 h1 {
   letter-spacing: 4px;
 }
-
 .subtitle {
   color: #c9c2e8;
   font-size: 14px;
   margin-bottom: 24px;
 }
-
 .field {
   text-align: left;
   margin-bottom: 15px;
 }
-
 .field label {
   display: block;
   margin-bottom: 7px;
   font-size: 13px;
   color: #ddd5ff;
 }
-
 input[type="tel"],
 input[type="password"],
 input[type="text"] {
@@ -72,11 +63,9 @@ input[type="text"] {
   color: white;
   font-size: 15px;
 }
-
 input::placeholder {
   color: #958bb9;
 }
-
 .row {
   display: flex;
   justify-content: space-between;
@@ -85,12 +74,10 @@ input::placeholder {
   margin-top: 15px;
   font-size: 12px;
 }
-
 a {
   color: #c2a8ff;
   text-decoration: none;
 }
-
 button {
   width: 100%;
   padding: 14px;
@@ -103,21 +90,17 @@ button {
   font-weight: bold;
   cursor: pointer;
 }
-
 button.secondary {
   margin-top: 10px;
   background: transparent;
   border: 1px solid #6945b8;
 }
-
 .screen {
   display: none;
 }
-
 .screen.active {
   display: block;
 }
-
 .terms {
   display: flex;
   gap: 8px;
@@ -126,14 +109,6 @@ button.secondary {
   text-align: left;
   font-size: 12px;
 }
-
-.notice {
-  margin-top: 18px;
-  font-size: 11px;
-  line-height: 1.5;
-  color: #aaa1d0;
-}
-
 .message {
   margin-top: 12px;
   font-size: 13px;
@@ -141,24 +116,18 @@ button.secondary {
 }
 </style>
 </head>
-
 <body>
 <main class="card">
-
   <section id="loginScreen" class="screen active">
-
     <img
       class="logo"
       src="logo.png"
       alt="OKPAY"
       onerror="this.style.display='none'"
     >
-
     <h1>OKPAY</h1>
     <p class="subtitle">Welcome to OKPAY</p>
-
     <form id="loginForm">
-
       <div class="field">
         <label for="phone">Phone Number</label>
         <input
@@ -172,7 +141,6 @@ button.secondary {
           required
         >
       </div>
-
       <div class="field">
         <label for="password">Password</label>
         <input
@@ -183,7 +151,6 @@ button.secondary {
           required
         >
       </div>
-
       <div class="field">
         <label for="pin">6-Digit PIN</label>
         <input
@@ -197,57 +164,37 @@ button.secondary {
           required
         >
       </div>
-
       <div class="row">
         <label>
           <input type="checkbox" id="remember">
           Remember Me
         </label>
-
         <a href="#" id="forgot">Forgot Password?</a>
       </div>
-
       <label class="terms">
         <input type="checkbox" id="agree" required>
         <span>I agree to the terms and privacy notice.</span>
       </label>
-
       <button type="submit">SIGN IN</button>
-
       <button type="button" class="secondary" id="register">
         REGISTER
       </button>
-
     </form>
-
     <p id="loginMessage" class="message" role="status"></p>
-
   </section>
 
   <section id="sendScreen" class="screen">
-
     <h1>OKPAY</h1>
     <p class="subtitle">Verification</p>
-
     <p>Continue to the verification preview.</p>
-
-    <button type="button" id="sendOtp">
-      SEND OTP
-    </button>
-
-    <button type="button" class="secondary" id="backLogin">
-      BACK
-    </button>
-
+    <button type="button" id="sendOtp">SEND OTP</button>
+    <button type="button" class="secondary" id="backLogin">BACK</button>
     <p id="sendMessage" class="message" role="status"></p>
-
   </section>
 
   <section id="otpScreen" class="screen">
-
     <h1>OKPAY</h1>
     <p class="subtitle">Verification</p>
-
     <div class="field">
       <label for="otp">One-Time Password</label>
       <input
@@ -260,23 +207,10 @@ button.secondary {
         autocomplete="off"
       >
     </div>
-
-    <button type="button" id="verify">
-      VERIFY
-    </button>
-
-    <button type="button" class="secondary" id="backSend">
-      BACK
-    </button>
-
+    <button type="button" id="verify">VERIFY</button>
+    <button type="button" class="secondary" id="backSend">BACK</button>
     <p id="otpMessage" class="message" role="status"></p>
-
   </section>
-
-  <div class="notice">
-    Demonstration interface only. Do not enter real passwords, PINs or OTPs.
-  </div>
-
 </main>
 
 <script>
@@ -324,7 +258,6 @@ document.getElementById("loginForm").addEventListener("submit", function (event)
 
   document.getElementById("password").value = "";
   document.getElementById("pin").value = "";
-
   showScreen(sendScreen);
 });
 
@@ -334,7 +267,6 @@ document.getElementById("sendOtp").addEventListener("click", function () {
 
   document.getElementById("otp").value = "";
   document.getElementById("otpMessage").textContent = "";
-
   showScreen(otpScreen);
 });
 
@@ -345,7 +277,6 @@ document.getElementById("register").addEventListener("click", function () {
 
 document.getElementById("forgot").addEventListener("click", function (event) {
   event.preventDefault();
-
   document.getElementById("loginMessage").textContent =
     "Password recovery preview is unavailable.";
 });
@@ -360,7 +291,6 @@ document.getElementById("verify").addEventListener("click", function () {
   }
 
   document.getElementById("otp").value = "";
-
   document.getElementById("otpMessage").textContent =
     "Preview complete. No information was saved.";
 });
