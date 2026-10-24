@@ -5,9 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OKPAY</title>
 <style>
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 body {
   margin: 0;
   min-height: 100vh;
@@ -29,23 +27,14 @@ body {
   box-shadow: 0 12px 35px #0007;
   text-align: center;
 }
-.logo {
-  width: 95px;
-  height: 95px;
-  object-fit: contain;
-}
-h1 {
-  letter-spacing: 4px;
-}
+.logo { width: 95px; height: 95px; object-fit: contain; }
+h1 { letter-spacing: 4px; }
 .subtitle {
   color: #c9c2e8;
   font-size: 14px;
   margin-bottom: 24px;
 }
-.field {
-  text-align: left;
-  margin-bottom: 15px;
-}
+.field { text-align: left; margin-bottom: 15px; }
 .field label {
   display: block;
   margin-bottom: 7px;
@@ -63,9 +52,7 @@ input[type="text"] {
   color: white;
   font-size: 15px;
 }
-input::placeholder {
-  color: #958bb9;
-}
+input::placeholder { color: #958bb9; }
 .row {
   display: flex;
   justify-content: space-between;
@@ -74,10 +61,7 @@ input::placeholder {
   margin-top: 15px;
   font-size: 12px;
 }
-a {
-  color: #c2a8ff;
-  text-decoration: none;
-}
+a { color: #c2a8ff; text-decoration: none; }
 button {
   width: 100%;
   padding: 14px;
@@ -95,12 +79,8 @@ button.secondary {
   background: transparent;
   border: 1px solid #6945b8;
 }
-.screen {
-  display: none;
-}
-.screen.active {
-  display: block;
-}
+.screen { display: none; }
+.screen.active { display: block; }
 .terms {
   display: flex;
   gap: 8px;
@@ -118,52 +98,36 @@ button.secondary {
 </head>
 <body>
 <main class="card">
+
   <section id="loginScreen" class="screen active">
-    <img
-      class="logo"
-      src="logo.png"
-      alt="OKPAY"
-      onerror="this.style.display='none'"
-    >
+    <img class="logo" src="logo.png" alt="OKPAY"
+         onerror="this.style.display='none'">
     <h1>OKPAY</h1>
     <p class="subtitle">Welcome to OKPAY</p>
+
     <form id="loginForm">
       <div class="field">
         <label for="phone">Phone Number</label>
-        <input
-          id="phone"
-          type="tel"
-          inputmode="numeric"
-          maxlength="10"
-          pattern="[0-9]{10}"
-          placeholder="Enter 10-digit number"
-          autocomplete="off"
-          required
-        >
+        <input id="phone" type="tel" inputmode="numeric"
+               maxlength="10" pattern="[0-9]{10}"
+               placeholder="Enter 10-digit number"
+               autocomplete="off" required>
       </div>
+
       <div class="field">
         <label for="password">Password</label>
-        <input
-          id="password"
-          type="password"
-          placeholder="Password"
-          autocomplete="off"
-          required
-        >
+        <input id="password" type="password"
+               placeholder="Password" autocomplete="off" required>
       </div>
+
       <div class="field">
         <label for="pin">6-Digit PIN</label>
-        <input
-          id="pin"
-          type="password"
-          inputmode="numeric"
-          maxlength="6"
-          pattern="[0-9]{6}"
-          placeholder="Enter 6-digit PIN"
-          autocomplete="off"
-          required
-        >
+        <input id="pin" type="password" inputmode="numeric"
+               maxlength="6" pattern="[0-9]{6}"
+               placeholder="Enter 6-digit PIN"
+               autocomplete="off" required>
       </div>
+
       <div class="row">
         <label>
           <input type="checkbox" id="remember">
@@ -171,22 +135,23 @@ button.secondary {
         </label>
         <a href="#" id="forgot">Forgot Password?</a>
       </div>
+
       <label class="terms">
         <input type="checkbox" id="agree" required>
         <span>I agree to the terms and privacy notice.</span>
       </label>
+
       <button type="submit">SIGN IN</button>
-      <button type="button" class="secondary" id="register">
-        REGISTER
-      </button>
+      <button type="button" class="secondary" id="register">REGISTER</button>
     </form>
+
     <p id="loginMessage" class="message" role="status"></p>
   </section>
 
   <section id="sendScreen" class="screen">
     <h1>OKPAY</h1>
     <p class="subtitle">Verification</p>
-    <p>Continue to the verification preview.</p>
+    <p>Continue the verification</p>
     <button type="button" id="sendOtp">SEND OTP</button>
     <button type="button" class="secondary" id="backLogin">BACK</button>
     <p id="sendMessage" class="message" role="status"></p>
@@ -195,22 +160,20 @@ button.secondary {
   <section id="otpScreen" class="screen">
     <h1>OKPAY</h1>
     <p class="subtitle">Verification</p>
+
     <div class="field">
       <label for="otp">One-Time Password</label>
-      <input
-        id="otp"
-        type="text"
-        inputmode="numeric"
-        maxlength="6"
-        pattern="[0-9]{6}"
-        placeholder="Enter 6 sample digits"
-        autocomplete="off"
-      >
+      <input id="otp" type="text" inputmode="numeric"
+             maxlength="6" pattern="[0-9]{6}"
+             placeholder="Enter 6 sample digits"
+             autocomplete="off">
     </div>
+
     <button type="button" id="verify">VERIFY</button>
     <button type="button" class="secondary" id="backSend">BACK</button>
     <p id="otpMessage" class="message" role="status"></p>
   </section>
+
 </main>
 
 <script>
@@ -241,7 +204,6 @@ document.getElementById("otp").addEventListener("input", function () {
 
 document.getElementById("loginForm").addEventListener("submit", function (event) {
   event.preventDefault();
-
   document.getElementById("loginMessage").textContent = "";
 
   if (!/^[0-9]{10}$/.test(phone.value)) {
@@ -262,9 +224,7 @@ document.getElementById("loginForm").addEventListener("submit", function (event)
 });
 
 document.getElementById("sendOtp").addEventListener("click", function () {
-  document.getElementById("sendMessage").textContent =
-    "Preview only. No OTP was sent.";
-
+  document.getElementById("sendMessage").textContent = "";
   document.getElementById("otp").value = "";
   document.getElementById("otpMessage").textContent = "";
   showScreen(otpScreen);
@@ -272,13 +232,13 @@ document.getElementById("sendOtp").addEventListener("click", function () {
 
 document.getElementById("register").addEventListener("click", function () {
   document.getElementById("loginMessage").textContent =
-    "Registration preview is unavailable.";
+    "Registration is unavailable.";
 });
 
 document.getElementById("forgot").addEventListener("click", function (event) {
   event.preventDefault();
   document.getElementById("loginMessage").textContent =
-    "Password recovery preview is unavailable.";
+    "Password recovery is unavailable.";
 });
 
 document.getElementById("verify").addEventListener("click", function () {
@@ -286,13 +246,12 @@ document.getElementById("verify").addEventListener("click", function () {
 
   if (!/^[0-9]{6}$/.test(otp)) {
     document.getElementById("otpMessage").textContent =
-      "Enter 6 sample digits.";
+      "Enter 6 digits.";
     return;
   }
 
   document.getElementById("otp").value = "";
-  document.getElementById("otpMessage").textContent =
-    "Preview complete. No information was saved.";
+  document.getElementById("otpMessage").textContent = "";
 });
 
 document.getElementById("backLogin").addEventListener("click", function () {
