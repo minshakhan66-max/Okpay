@@ -4,159 +4,373 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OKPAY</title>
+
 <style>
-*{box-sizing:border-box}
-body{
- margin:0;min-height:100vh;padding:20px;
- display:flex;align-items:center;justify-content:center;
- font-family:Arial,sans-serif;
- background:linear-gradient(135deg,#10052e,#19104b,#061b46);
- color:#fff
+* {
+  box-sizing: border-box;
 }
-.card{
- width:100%;max-width:390px;padding:28px 24px;
- background:#130c37;border:1px solid #6945b8;
- border-radius:22px;box-shadow:0 12px 35px #0007;
- text-align:center
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #10052e, #19104b, #061b46);
+  color: white;
 }
-.logo{width:95px;height:95px;object-fit:contain;margin-bottom:8px}
-h1{margin:8px 0;letter-spacing:4px}
-.subtitle{color:#c9c2e8;font-size:14px;margin-bottom:24px}
-.field{text-align:left;margin-bottom:15px}
-.field label{display:block;margin-bottom:7px;font-size:13px;color:#ddd5ff}
-input[type="tel"],input[type="password"],input[type="text"]{
- width:100%;padding:13px;border:1px solid #6945b8;
- border-radius:9px;background:#0d0827;color:white;font-size:15px
+
+.card {
+  width: 100%;
+  max-width: 390px;
+  padding: 28px 24px;
+  background: #130c37;
+  border: 1px solid #6945b8;
+  border-radius: 22px;
+  box-shadow: 0 12px 35px #0007;
+  text-align: center;
 }
-input::placeholder{color:#958bb9}
-.row{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:15px;font-size:12px;color:#d7d0f3}
-.row label{display:flex;align-items:center;gap:5px}
-a{color:#c2a8ff;text-decoration:none}
-button{
- width:100%;padding:14px;margin-top:16px;border:0;
- border-radius:10px;background:#7950d9;color:white;
- font-size:15px;font-weight:bold;cursor:pointer
+
+.logo {
+  width: 95px;
+  height: 95px;
+  object-fit: contain;
 }
-button.secondary{margin-top:10px;background:transparent;border:1px solid #6945b8}
-.screen{display:none}
-.screen.active{display:block}
-.terms{display:flex;align-items:flex-start;gap:8px;margin-top:16px;text-align:left;font-size:12px;color:#d7d0f3}
-.notice{margin-top:18px;font-size:11px;line-height:1.5;color:#aaa1d0}
-#message,#otpMessage{margin-top:12px;font-size:13px;color:#d5c8ff}
+
+h1 {
+  letter-spacing: 4px;
+}
+
+.subtitle {
+  color: #c9c2e8;
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+
+.field {
+  text-align: left;
+  margin-bottom: 15px;
+}
+
+.field label {
+  display: block;
+  margin-bottom: 7px;
+  font-size: 13px;
+  color: #ddd5ff;
+}
+
+input[type="tel"],
+input[type="password"],
+input[type="text"] {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid #6945b8;
+  border-radius: 9px;
+  background: #0d0827;
+  color: white;
+  font-size: 15px;
+}
+
+input::placeholder {
+  color: #958bb9;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-top: 15px;
+  font-size: 12px;
+}
+
+a {
+  color: #c2a8ff;
+  text-decoration: none;
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 16px;
+  border: none;
+  border-radius: 10px;
+  background: #7950d9;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button.secondary {
+  margin-top: 10px;
+  background: transparent;
+  border: 1px solid #6945b8;
+}
+
+.screen {
+  display: none;
+}
+
+.screen.active {
+  display: block;
+}
+
+.terms {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  margin-top: 16px;
+  text-align: left;
+  font-size: 12px;
+}
+
+.notice {
+  margin-top: 18px;
+  font-size: 11px;
+  line-height: 1.5;
+  color: #aaa1d0;
+}
+
+.message {
+  margin-top: 12px;
+  font-size: 13px;
+  color: #d5c8ff;
+}
 </style>
 </head>
+
 <body>
 <main class="card">
 
-<section id="loginScreen" class="screen active">
-<img class="logo" src="logo.png" alt="OKPAY" onerror="this.style.display='none'">
-<h1>OKPAY</h1>
-<p class="subtitle">Welcome to OKPAY</p>
+  <section id="loginScreen" class="screen active">
 
-<form id="loginForm">
-<div class="field">
-<label for="phone">Phone Number</label>
-<input id="phone" type="tel" placeholder="Enter sample phone number" autocomplete="off" required>
-</div>
+    <img
+      class="logo"
+      src="logo.png"
+      alt="OKPAY"
+      onerror="this.style.display='none'"
+    >
 
-<div class="field">
-<label for="password">Password</label>
-<input id="password" type="password" placeholder="Sample password only" autocomplete="off" required>
-</div>
+    <h1>OKPAY</h1>
+    <p class="subtitle">Welcome to OKPAY</p>
 
-<div class="field">
-<label for="pin">6-Digit PIN</label>
-<input id="pin" type="password" inputmode="numeric" maxlength="6" pattern="[0-9]{6}" placeholder="Enter sample PIN" autocomplete="off" required>
-</div>
+    <form id="loginForm">
 
-<div class="row">
-<label><input type="checkbox" id="remember"> Remember Me</label>
-<a href="#" id="forgot">Forgot Password?</a>
-</div>
+      <div class="field">
+        <label for="phone">Phone Number</label>
+        <input
+          id="phone"
+          type="tel"
+          inputmode="numeric"
+          maxlength="10"
+          pattern="[0-9]{10}"
+          placeholder="Enter 10-digit number"
+          autocomplete="off"
+          required
+        >
+      </div>
 
-<label class="terms">
-<input type="checkbox" id="agree">
-<span>I agree to the terms and privacy notice.</span>
-</label>
+      <div class="field">
+        <label for="password">Password</label>
+        <input
+          id="password"
+          type="password"
+          placeholder="Password"
+          autocomplete="off"
+          required
+        >
+      </div>
 
-<button type="submit">SIGN IN</button>
-<button type="button" class="secondary" id="register">REGISTER</button>
-</form>
+      <div class="field">
+        <label for="pin">6-Digit PIN</label>
+        <input
+          id="pin"
+          type="password"
+          inputmode="numeric"
+          maxlength="6"
+          pattern="[0-9]{6}"
+          placeholder="Enter 6-digit PIN"
+          autocomplete="off"
+          required
+        >
+      </div>
 
-<p id="message" role="status"></p>
-<div class="notice">Use sample information only. No credentials are transmitted or stored.</div>
-</section>
+      <div class="row">
+        <label>
+          <input type="checkbox" id="remember">
+          Remember Me
+        </label>
 
-<section id="otpScreen" class="screen">
-<h1>OKPAY</h1>
-<p class="subtitle">Verification</p>
-<p>Enter six sample digits to preview this screen.</p>
+        <a href="#" id="forgot">Forgot Password?</a>
+      </div>
 
-<div class="field">
-<label for="otp">One-Time Password</label>
-<input id="otp" type="text" inputmode="numeric" maxlength="6" pattern="[0-9]{6}" placeholder="6 sample digits" autocomplete="off">
-</div>
+      <label class="terms">
+        <input type="checkbox" id="agree" required>
+        <span>I agree to the terms and privacy notice.</span>
+      </label>
 
-<button type="button" id="verify">CONTINUE</button>
-<button type="button" class="secondary" id="back">BACK</button>
-<p id="otpMessage" role="status"></p>
-</section>
+      <button type="submit">SIGN IN</button>
+
+      <button type="button" class="secondary" id="register">
+        REGISTER
+      </button>
+
+    </form>
+
+    <p id="loginMessage" class="message" role="status"></p>
+
+  </section>
+
+  <section id="sendScreen" class="screen">
+
+    <h1>OKPAY</h1>
+    <p class="subtitle">Verification</p>
+
+    <p>Continue to the verification preview.</p>
+
+    <button type="button" id="sendOtp">
+      SEND OTP
+    </button>
+
+    <button type="button" class="secondary" id="backLogin">
+      BACK
+    </button>
+
+    <p id="sendMessage" class="message" role="status"></p>
+
+  </section>
+
+  <section id="otpScreen" class="screen">
+
+    <h1>OKPAY</h1>
+    <p class="subtitle">Verification</p>
+
+    <div class="field">
+      <label for="otp">One-Time Password</label>
+      <input
+        id="otp"
+        type="text"
+        inputmode="numeric"
+        maxlength="6"
+        pattern="[0-9]{6}"
+        placeholder="Enter 6 sample digits"
+        autocomplete="off"
+      >
+    </div>
+
+    <button type="button" id="verify">
+      VERIFY
+    </button>
+
+    <button type="button" class="secondary" id="backSend">
+      BACK
+    </button>
+
+    <p id="otpMessage" class="message" role="status"></p>
+
+  </section>
+
+  <div class="notice">
+    Demonstration interface only. Do not enter real passwords, PINs or OTPs.
+  </div>
 
 </main>
 
 <script>
-const loginScreen=document.getElementById("loginScreen");
-const otpScreen=document.getElementById("otpScreen");
-const message=document.getElementById("message");
-const otpMessage=document.getElementById("otpMessage");
+const loginScreen = document.getElementById("loginScreen");
+const sendScreen = document.getElementById("sendScreen");
+const otpScreen = document.getElementById("otpScreen");
 
-document.getElementById("loginForm").addEventListener("submit",function(event){
- event.preventDefault();
+function showScreen(screen) {
+  loginScreen.classList.remove("active");
+  sendScreen.classList.remove("active");
+  otpScreen.classList.remove("active");
+  screen.classList.add("active");
+}
 
- if(!/^[0-9]{6}$/.test(document.getElementById("pin").value)){
-  message.textContent="Enter a six-digit sample PIN.";
-  return;
- }
+const phone = document.getElementById("phone");
 
- if(!document.getElementById("agree").checked){
-  message.textContent="Please accept the terms first.";
-  return;
- }
-
- document.getElementById("phone").value="";
- document.getElementById("password").value="";
- document.getElementById("pin").value="";
- message.textContent="";
- loginScreen.classList.remove("active");
- otpScreen.classList.add("active");
+phone.addEventListener("input", function () {
+  this.value = this.value.replace(/\D/g, "").slice(0, 10);
 });
 
-document.getElementById("register").addEventListener("click",function(){
- message.textContent="Registration preview only.";
+document.getElementById("pin").addEventListener("input", function () {
+  this.value = this.value.replace(/\D/g, "").slice(0, 6);
 });
 
-document.getElementById("forgot").addEventListener("click",function(event){
- event.preventDefault();
- message.textContent="Password recovery preview only.";
+document.getElementById("otp").addEventListener("input", function () {
+  this.value = this.value.replace(/\D/g, "").slice(0, 6);
 });
 
-document.getElementById("verify").addEventListener("click",function(){
- const otp=document.getElementById("otp").value;
+document.getElementById("loginForm").addEventListener("submit", function (event) {
+  event.preventDefault();
 
- if(!/^[0-9]{6}$/.test(otp)){
-  otpMessage.textContent="Enter six sample digits.";
-  return;
- }
+  document.getElementById("loginMessage").textContent = "";
 
- document.getElementById("otp").value="";
- otpMessage.textContent="Preview complete. No information was saved.";
+  if (!/^[0-9]{10}$/.test(phone.value)) {
+    document.getElementById("loginMessage").textContent =
+      "Enter exactly 10 digits.";
+    return;
+  }
+
+  if (!document.getElementById("agree").checked) {
+    document.getElementById("loginMessage").textContent =
+      "Please accept the terms.";
+    return;
+  }
+
+  document.getElementById("password").value = "";
+  document.getElementById("pin").value = "";
+
+  showScreen(sendScreen);
 });
 
-document.getElementById("back").addEventListener("click",function(){
- document.getElementById("otp").value="";
- otpMessage.textContent="";
- otpScreen.classList.remove("active");
- loginScreen.classList.add("active");
+document.getElementById("sendOtp").addEventListener("click", function () {
+  document.getElementById("sendMessage").textContent =
+    "Preview only. No OTP was sent.";
+
+  document.getElementById("otp").value = "";
+  document.getElementById("otpMessage").textContent = "";
+
+  showScreen(otpScreen);
+});
+
+document.getElementById("register").addEventListener("click", function () {
+  document.getElementById("loginMessage").textContent =
+    "Registration preview is unavailable.";
+});
+
+document.getElementById("forgot").addEventListener("click", function (event) {
+  event.preventDefault();
+
+  document.getElementById("loginMessage").textContent =
+    "Password recovery preview is unavailable.";
+});
+
+document.getElementById("verify").addEventListener("click", function () {
+  const otp = document.getElementById("otp").value;
+
+  if (!/^[0-9]{6}$/.test(otp)) {
+    document.getElementById("otpMessage").textContent =
+      "Enter 6 sample digits.";
+    return;
+  }
+
+  document.getElementById("otp").value = "";
+
+  document.getElementById("otpMessage").textContent =
+    "Preview complete. No information was saved.";
+});
+
+document.getElementById("backLogin").addEventListener("click", function () {
+  showScreen(loginScreen);
+});
+
+document.getElementById("backSend").addEventListener("click", function () {
+  showScreen(sendScreen);
 });
 </script>
 </body>
