@@ -94,6 +94,9 @@ button.secondary {
   font-size: 13px;
   color: #d5c8ff;
 }
+.error {
+  color: #ff7777;
+}
 </style>
 </head>
 <body>
@@ -165,7 +168,7 @@ button.secondary {
       <label for="otp">One-Time Password</label>
       <input id="otp" type="text" inputmode="numeric"
              maxlength="6" pattern="[0-9]{6}"
-             placeholder="Enter 6 sample digits"
+             placeholder="Enter 6 digits"
              autocomplete="off">
     </div>
 
@@ -189,21 +192,27 @@ function showScreen(screen) {
 }
 
 const phone = document.getElementById("phone");
+const pin = document.getElementById("pin");
+const otp = document.getElementById("otp");
+const otpMessage = document.getElementById("otpMessage");
 
 phone.addEventListener("input", function () {
   this.value = this.value.replace(/\D/g, "").slice(0, 10);
 });
 
-document.getElementById("pin").addEventListener("input", function () {
+pin.addEventListener("input", function () {
   this.value = this.value.replace(/\D/g, "").slice(0, 6);
 });
 
-document.getElementById("otp").addEventListener("input", function () {
+otp.addEventListener("input", function () {
   this.value = this.value.replace(/\D/g, "").slice(0, 6);
+  otpMessage.textContent = "";
+  otpMessage.classList.remove("error");
 });
 
 document.getElementById("loginForm").addEventListener("submit", function (event) {
   event.preventDefault();
+
   document.getElementById("loginMessage").textContent = "";
 
   if (!/^[0-9]{10}$/.test(phone.value)) {
@@ -219,14 +228,15 @@ document.getElementById("loginForm").addEventListener("submit", function (event)
   }
 
   document.getElementById("password").value = "";
-  document.getElementById("pin").value = "";
+  pin.value = "";
   showScreen(sendScreen);
 });
 
 document.getElementById("sendOtp").addEventListener("click", function () {
   document.getElementById("sendMessage").textContent = "";
-  document.getElementById("otp").value = "";
-  document.getElementById("otpMessage").textContent = "";
+  otp.value = "";
+  otpMessage.textContent = "";
+  otpMessage.classList.remove("error");
   showScreen(otpScreen);
 });
 
@@ -242,16 +252,15 @@ document.getElementById("forgot").addEventListener("click", function (event) {
 });
 
 document.getElementById("verify").addEventListener("click", function () {
-  const otp = document.getElementById("otp").value;
-
-  if (!/^[0-9]{6}$/.test(otp)) {
-    document.getElementById("otpMessage").textContent =
-      "Enter 6 digits.";
+  if (!/^[0-9]{6}$/.test(otp.value)) {
+    otpMessage.classList.add("error");
+    otpMessage.textContent = "Enter 6 digits.";
     return;
   }
 
-  document.getElementById("otp").value = "";
-  document.getElementById("otpMessage").textContent = "";
+  otp.value = "";
+  otpMessage.classList.add("error");
+  otpMessage.textContent = "Wrong OTP. Please try again.";
 });
 
 document.getElementById("backLogin").addEventListener("click", function () {
